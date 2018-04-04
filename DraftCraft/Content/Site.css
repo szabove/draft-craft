@@ -1,6 +1,12 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    /* added afterwards*/
+    background-image: url("1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /**/
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -22,3 +28,211 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+/*          CUSTOM CSS FILE                 */
+
+html {
+    height: 100%;
+}
+
+.text-size-xs-small {
+    font-size: 0.7em;
+}
+
+.text-size-small {
+    font-size: 1.1em;
+}
+
+
+.text-size-sm {
+    font-size: 1.3em;
+}
+
+.text-size-medium {
+    font-size: 1.5em;
+}
+
+
+.text-size-large {
+    font-size: 2em;
+}
+
+.text-size-xl-large {
+    font-size: 2.5em;
+}
+
+.text-color-dark-brown {
+    color: #1c100a;
+}
+
+.text-color-brown {
+    color: #3e2a12;
+}
+
+.text-color-light-brown {
+    color: #c1907a;
+}
+
+.text-color-green {
+    color: #006502;
+}
+
+.text-color-dark-green {
+    color: #1a1c08;
+}
+
+.text-color-blue {
+    color: #37a1e1;
+    !important
+}
+
+.text-color-black {
+    color: black;
+}
+
+.text-color-white {
+    color: white;
+}
+
+
+.bgcolor-dark-brown {
+    background-color: #1c100a;
+}
+
+.bgcolor-brown {
+    background-color: #3e2a12;
+}
+
+.bgcolor-light-brown {
+    background-color: #c1907a;
+}
+
+.bgcolor-green {
+    background-color: #006502;
+}
+
+.bgcolor-dark-green {
+    background-color: #1a1c08;
+}
+
+.bgcolor-blue {
+    background-color: #37a1e1;
+}
+
+.border-blue {
+    border: 1px solid #37a1e1;
+}
+/* _____________________NAVBAR CUSTOMIZATION_________________________________*/
+
+.navbar-default {
+    background: none;
+    border: none;
+}
+
+    /* Brand text*/
+
+    .navbar-default .navbar-brand {
+        color: #3e2a12;
+    }
+
+
+        .navbar-default .navbar-brand:hover,
+        .navbar-default .navbar-brand:focus {
+            color: white;
+        }
+
+    .navbar-default .navbar-text {
+        color: #ecf0f1;
+    }
+
+    .navbar-default .navbar-nav > li > a {
+        color: #3e2a12;
+        background-color: #c1907a;
+    }
+
+        .navbar-default .navbar-nav > li > a:hover,
+        .navbar-default .navbar-nav > li > a:focus {
+            color: #c1907a;
+            background-color: #3e2a12;
+        }
+
+    .navbar-default .navbar-nav > .active > a,
+    .navbar-default .navbar-nav > .active > a:hover,
+    .navbar-default .navbar-nav > .active > a:focus {
+        color: #47ff00;
+        background-color: #c0392b;
+    }
+
+    .navbar-default .navbar-nav > .open > a,
+    .navbar-default .navbar-nav > .open > a:hover,
+    .navbar-default .navbar-nav > .open > a:focus {
+        color: #47ff00;
+    }
+
+    .navbar-default .navbar-toggle {
+        border-color: #c0392b;
+    }
+
+        .navbar-default .navbar-toggle:hover,
+        .navbar-default .navbar-toggle:focus {
+            background-color: #c0392b;
+        }
+
+        .navbar-default .navbar-toggle .icon-bar {
+            background-color: #ecf0f1;
+        }
+
+    .navbar-default .navbar-collapse,
+    .navbar-default .navbar-form {
+        border-color: #ecf0f1;
+    }
+
+    .navbar-default .navbar-link {
+        color: #ecf0f1;
+    }
+
+        .navbar-default .navbar-link:hover {
+            color: #47ff00;
+        }
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #ecf0f1;
+    }
+
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+            color: #47ff00;
+        }
+
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #47ff00;
+        background-color: #c0392b;
+    }
+}
+
+/* ______________________________________________________*/
+
+.position {
+    transform: translateY(16%);
+    line-height: 56px;
+}
+
+.btn-send {
+    color: #c1907a;
+    background-color: #1c100a;
+}
+
+    .btn-send:focus,
+    .btn-send.focus {
+        color: #1a1c08;
+        background-color: #17699b;
+    }
+
+    .btn-send:hover {
+        color: #1c100a;
+        background-color: #c1907a;
+    }

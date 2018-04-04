@@ -193,6 +193,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KategorijeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProizvodiController.cs" />
     <Compile Include="DAL\StoreContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -200,6 +201,18 @@
     <Compile Include="Migrations\201803291349069_TableNameCorrection.cs" />
     <Compile Include="Migrations\201803291349069_TableNameCorrection.Designer.cs">
       <DependentUpon>201803291349069_TableNameCorrection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803291505549_DodaniStupciProizvodaSVD.cs" />
+    <Compile Include="Migrations\201803291505549_DodaniStupciProizvodaSVD.Designer.cs">
+      <DependentUpon>201803291505549_DodaniStupciProizvodaSVD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804041114114_PotvrdivanjeNazivaKategorije.cs" />
+    <Compile Include="Migrations\201804041114114_PotvrdivanjeNazivaKategorije.Designer.cs">
+      <DependentUpon>201804041114114_PotvrdivanjeNazivaKategorije.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804041522051_PotvrdivanjeProizvodaValid.cs" />
+    <Compile Include="Migrations\201804041522051_PotvrdivanjeProizvodaValid.Designer.cs">
+      <DependentUpon>201804041522051_PotvrdivanjeProizvodaValid.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -233,7 +246,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -272,6 +287,11 @@
     <Content Include="Views\Kategorije\Details.cshtml" />
     <Content Include="Views\Kategorije\Edit.cshtml" />
     <Content Include="Views\Kategorije\Index.cshtml" />
+    <Content Include="Views\Proizvodi\Create.cshtml" />
+    <Content Include="Views\Proizvodi\Delete.cshtml" />
+    <Content Include="Views\Proizvodi\Details.cshtml" />
+    <Content Include="Views\Proizvodi\Edit.cshtml" />
+    <Content Include="Views\Proizvodi\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -292,6 +312,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803291349069_TableNameCorrection.resx">
       <DependentUpon>201803291349069_TableNameCorrection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803291505549_DodaniStupciProizvodaSVD.resx">
+      <DependentUpon>201803291505549_DodaniStupciProizvodaSVD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804041114114_PotvrdivanjeNazivaKategorije.resx">
+      <DependentUpon>201804041114114_PotvrdivanjeNazivaKategorije.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804041522051_PotvrdivanjeProizvodaValid.resx">
+      <DependentUpon>201804041522051_PotvrdivanjeProizvodaValid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

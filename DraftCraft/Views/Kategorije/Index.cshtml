@@ -20,7 +20,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Naziv)
+            @Html.ActionLink(item.Naziv, "Index" , "Proizvodi", new { kategorija = item.Naziv}, null)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<DraftCraft.Models.Proizvod>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    @using (Html.BeginForm("Index", "Proizvodi", FormMethod.Get))
+    {
+        <label>Filtriraj po kategorijama:</label> @Html.DropDownList("Kategorija", "Sve")
+        <input type="submit" value="OK" />
+        <input type="hidden" name="Search" id="Search" value="@ViewBag.Search" />
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategorija.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cijena)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sirina)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Visina)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dubina)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategorija.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cijena)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sirina)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Visina)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dubina)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

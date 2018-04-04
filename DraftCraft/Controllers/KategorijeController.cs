@@ -111,7 +111,14 @@ namespace DraftCraft.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+           
             Kategorija kategorija = db.Kategorije.Find(id);
+
+            foreach (var p in kategorija.Proizvodi)
+            {
+                p.KategorijaID = null;
+            }
+
             db.Kategorije.Remove(kategorija);
             db.SaveChanges();
             return RedirectToAction("Index");
