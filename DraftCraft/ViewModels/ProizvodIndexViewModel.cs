@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace DraftCraft.ViewModels
 {
     public class ProizvodIndexViewModel
     {
-        public IQueryable<Proizvod> Proizvodi { get; set; }
+        public IPagedList<Proizvod> Proizvodi { get; set; }
         public string Search { get; set; }
         public IEnumerable<KategorijeIbrojac> KatSbrojacem { get; set; }
         public string Kategorija { get; set; }

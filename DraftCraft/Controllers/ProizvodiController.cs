@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using DraftCraft.DAL;
 using DraftCraft.Models;
 using DraftCraft.ViewModels;
+using PagedList;
 
 namespace DraftCraft.Controllers
 {
@@ -17,7 +18,7 @@ namespace DraftCraft.Controllers
         private StoreContext db = new StoreContext();
 
         // GET: Proizvodi
-        public ActionResult Index(string kategorija, string search, string sortBy)
+        public ActionResult Index(string kategorija, string search, string sortBy, int? page)
         {
             //instantiate a new view model
             ProizvodIndexViewModel viewModel = new ProizvodIndexViewModel();
@@ -27,6 +28,7 @@ namespace DraftCraft.Controllers
             if (!String.IsNullOrEmpty(kategorija))
             {
                 proizvodi = proizvodi.Where(p => p.Kategorija.Naziv == kategorija);
+                viewModel.Kategorija = kategorija;
             }
 
 
@@ -74,8 +76,16 @@ namespace DraftCraft.Controllers
                     proizvodi = proizvodi.OrderByDescending(p => p.Naziv);
                     break;
                 default:
+                    proizvodi = proizvodi.OrderBy(p => p.Naziv);
                     break;
             }
+
+            //Paging
+
+            const int PageItems = 3;
+            int currentPage = (page ?? 1);
+            viewModel.Proizvodi = proizvodi.ToPagedList(currentPage, PageItems);
+            viewModel.SortBy = sortBy;
 
             //storing sort dictionary in Sorts variable
             viewModel.Sorts = new Dictionary<string, string>
@@ -86,8 +96,6 @@ namespace DraftCraft.Controllers
                 {"+ abc -","abc_max" }
             };
 
-
-            viewModel.Proizvodi = proizvodi;
             return View(viewModel);
         }
 

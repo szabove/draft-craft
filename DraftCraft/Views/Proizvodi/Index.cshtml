@@ -1,11 +1,15 @@
 ﻿@model DraftCraft.ViewModels.ProizvodIndexViewModel
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
+<h2>@ViewBag.Title</h2>
+<p>
+    @(String.IsNullOrWhiteSpace(Model.Search) ? "Prikaži sve" : "Pretraživanje pojma " + " \"" + Model.Search +"\"" + " je uspješno!"  )
+    @Model.Proizvodi.TotalItemCount proizvoda
+</p>
 <p>
     @Html.ActionLink("Create New", "Create")
     @using (Html.BeginForm("Index", "Proizvodi", FormMethod.Get))
@@ -79,3 +83,15 @@
 }
 
 </table>
+<div>
+    Page @(Model.Proizvodi.PageCount < Model.Proizvodi.PageNumber ? 0 : Model.Proizvodi.PageNumber)
+    of @Model.Proizvodi.PageCount
+    @Html.PagedListPager(Model.Proizvodi, page=>Url.Action("Index",
+    new { kategorija = @Model.Kategorija,
+            Search = @Model.Search,
+            sortBy = @Model.SortBy,
+            page
+    }))
+                                        
+                                        
+</div>
