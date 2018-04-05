@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DraftCraft.Models.Proizvod>
+﻿@model DraftCraft.ViewModels.ProizvodIndexViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -10,38 +10,44 @@
     @Html.ActionLink("Create New", "Create")
     @using (Html.BeginForm("Index", "Proizvodi", FormMethod.Get))
     {
-        <label>Filtriraj po kategorijama:</label> @Html.DropDownList("Kategorija", "Sve")
-        <input type="submit" value="OK" />
-        <input type="hidden" name="Search" id="Search" value="@ViewBag.Search" />
+        <label>Filtriraj po kategorijama:</label>
+        @Html.DropDownListFor(vm => vm.Kategorija, Model.KatFilter, "Sve");
+
+        <input type="hidden" name="Search" id="Search" value="@Model.Search" />
+
+        <label>Sortiraj po:</label>
+        @Html.DropDownListFor(vm => vm.SortBy, new SelectList(Model.Sorts, "Value", "Key"), "")
+
+        <input type="submit" value="Filter" />
     }
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Kategorija.Naziv)
+            @Html.DisplayNameFor(model => model.Kategorija)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Naziv)
+            @Html.DisplayNameFor(model => model.Proizvodi.First().Naziv)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Opis)
+            @Html.DisplayNameFor(model => model.Proizvodi.First().Opis)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cijena)
+            @Html.DisplayNameFor(model => model.Proizvodi.First().Cijena)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Sirina)
+            @Html.DisplayNameFor(model => model.Proizvodi.First().Sirina)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Visina)
+            @Html.DisplayNameFor(model => model.Proizvodi.First().Visina)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Dubina)
+            @Html.DisplayNameFor(model => model.Proizvodi.First().Dubina)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.Proizvodi) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Kategorija.Naziv)

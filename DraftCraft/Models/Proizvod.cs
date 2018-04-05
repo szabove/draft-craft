@@ -29,19 +29,19 @@ namespace DraftCraft.Models
         [Range(0.01, 10000, ErrorMessage = "Unesi širinu proizvoda između 0.01 i 10 000")]
         [RegularExpression("[0-9]+(\\.[0-9][0-9]?)?", ErrorMessage = "Širina sadržava samo brojeve")]
         [DisplayFormat(DataFormatString = "{0:###}")]
-        public decimal Sirina { get; set; }
+        public int Sirina { get; set; }
 
         [Required(ErrorMessage = "Unesi visinu proizvoda")]
         [Range(0.01, 10000, ErrorMessage = "Unesi visinu proizvoda između 0.01 i 10 000")]
         [RegularExpression("[0-9]+(\\.[0-9][0-9]?)?", ErrorMessage = "Visina sadržava samo brojeve")]
         [DisplayFormat(DataFormatString = "{0:###}")]
-        public decimal Visina { get; set; }
+        public int Visina { get; set; }
 
         [Required(ErrorMessage = "Unesi dubinu proizvoda")]
         [Range(0.01, 10000, ErrorMessage = "Unesi dubinu proizvoda između 0.01 i 10 000")]
         [RegularExpression("[0-9]+(\\.[0-9][0-9]?)?", ErrorMessage = "Dubina sadržava samo brojeve")]
         [DisplayFormat(DataFormatString = "{0:###}")]
-        public decimal Dubina { get; set; }
+        public int Dubina { get; set; }
 
         public int? KategorijaID { get; set; }
         public virtual Kategorija Kategorija { get; set; }

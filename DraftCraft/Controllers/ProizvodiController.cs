@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using DraftCraft.DAL;
 using DraftCraft.Models;
+using DraftCraft.ViewModels;
 
 namespace DraftCraft.Controllers
 {
@@ -16,8 +17,11 @@ namespace DraftCraft.Controllers
         private StoreContext db = new StoreContext();
 
         // GET: Proizvodi
-        public ActionResult Index(string kategorija, string search)
+        public ActionResult Index(string kategorija, string search, string sortBy)
         {
+            //instantiate a new view model
+            ProizvodIndexViewModel viewModel = new ProizvodIndexViewModel();
+
             var proizvodi = db.Proizvodi.Include(p => p.Kategorija);
 
             if (!String.IsNullOrEmpty(kategorija))
@@ -25,13 +29,28 @@ namespace DraftCraft.Controllers
                 proizvodi = proizvodi.Where(p => p.Kategorija.Naziv == kategorija);
             }
 
+
+            //Searching products by name || description || category
             if (!String.IsNullOrEmpty(search))
             {
                 proizvodi = proizvodi.Where(p => p.Naziv.Contains(search) || p.Opis.Contains(search) || p.Kategorija.Naziv.Contains(search));
-                ViewBag.Search = search;
+                viewModel.Search = search;
             }
 
-            
+            viewModel.KatSbrojacem = from matchingProducts in proizvodi
+                                      where
+                                      matchingProducts.KategorijaID != null
+                                      group matchingProducts by
+                                      matchingProducts.Kategorija.Naziv into
+                                      catGroup
+                                      select new KategorijeIbrojac()
+                                      {
+                                          NazivKategorije = catGroup.Key,
+                                          ProizvodiCount = catGroup.Count()
+                                      };
+
+
+
             var kategorije = proizvodi.OrderBy(p => p.Kategorija.Naziv).Select(p => p.Kategorija.Naziv).Distinct();
 
             if (!String.IsNullOrEmpty(kategorija))
@@ -39,9 +58,37 @@ namespace DraftCraft.Controllers
                 proizvodi = proizvodi.Where(p => p.Kategorija.Naziv == kategorija);
             }
 
-            ViewBag.Kategorija = new SelectList(kategorije);
+            //sort the results
+            switch (sortBy)
+            {
+                case "cijena_min":
+                    proizvodi = proizvodi.OrderBy(p => p.Cijena);
+                    break;
+                case "cijena_max":
+                    proizvodi = proizvodi.OrderByDescending(p => p.Cijena);
+                    break;
+                case "abc_min":
+                    proizvodi = proizvodi.OrderBy(p => p.Naziv);
+                    break;
+                case "abc_max":
+                    proizvodi = proizvodi.OrderByDescending(p => p.Naziv);
+                    break;
+                default:
+                    break;
+            }
 
-            return View(proizvodi.ToList());
+            //storing sort dictionary in Sorts variable
+            viewModel.Sorts = new Dictionary<string, string>
+            {
+                {"- cijena +","cijena_min" },
+                {"+ cijena -","cijena_max" },
+                {"- abc +","abc_min" },
+                {"+ abc -","abc_max" }
+            };
+
+
+            viewModel.Proizvodi = proizvodi;
+            return View(viewModel);
         }
 
         // GET: Proizvodi/Details/5
