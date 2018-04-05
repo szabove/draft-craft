@@ -18,7 +18,7 @@ namespace DraftCraft.Controllers
         private StoreContext db = new StoreContext();
 
         // GET: Proizvodi
-        public ActionResult Index(string kategorija, string search, string sortBy, int? page)
+        public ActionResult Index(string kategorija, string search, string sortBy, int? page, int pageItems = 10)
         {
             //instantiate a new view model
             ProizvodIndexViewModel viewModel = new ProizvodIndexViewModel();
@@ -80,12 +80,61 @@ namespace DraftCraft.Controllers
                     break;
             }
 
-            //Paging
+            //Paging and items/page selection
 
-            const int PageItems = 3;
+            
+            
+            switch (pageItems)
+            {
+                case 1:
+                    pageItems = 1;
+                    break;
+                case 5:
+                    pageItems = 5;
+                    break;
+                case 10:
+                    pageItems = 10;
+                    break;
+                case 15:
+                    pageItems = 15;
+                    break;
+                case 20:
+                    pageItems = 5;
+                    break;
+                default:
+                    pageItems = 10;
+                    break;
+            }
+
+            //const int PageItems = 3;
+            //int PageItems;
+            //bool isNum = int.TryParse(pageItems.ToString(), out PageItems);
+            //if (isNum)
+            //{
+            //    PageItems = pageItems;
+            //}
+            //else
+            //{
+            //    PageItems = 10;
+            //}
+
+            viewModel.PageItems = pageItems;
+
             int currentPage = (page ?? 1);
-            viewModel.Proizvodi = proizvodi.ToPagedList(currentPage, PageItems);
+            viewModel.Proizvodi = proizvodi.ToPagedList(currentPage, pageItems);
             viewModel.SortBy = sortBy;
+
+            
+
+            viewModel.PageItemNumber = new Dictionary<int, string> {
+                {1, "1" },
+                {5, "5" },
+                {10, "10" },
+                {15, "15" },
+                {20, "20" }
+            };
+
+
 
             //storing sort dictionary in Sorts variable
             viewModel.Sorts = new Dictionary<string, string>

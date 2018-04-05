@@ -22,6 +22,9 @@
         <label>Sortiraj po:</label>
         @Html.DropDownListFor(vm => vm.SortBy, new SelectList(Model.Sorts, "Value", "Key"), "")
 
+        <label>Broj proizvoda po stranici: </label>
+        @Html.DropDownListFor(vm => vm.PageItems, new SelectList(Model.PageItemNumber, "Value", "Key"), "")
+
         <input type="submit" value="Filter" />
     }
 </p>
@@ -90,6 +93,7 @@
     new { kategorija = @Model.Kategorija,
             Search = @Model.Search,
             sortBy = @Model.SortBy,
+            pageItems = @Model.PageItems,
             page
     }))
                                         

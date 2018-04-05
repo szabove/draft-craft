@@ -11,6 +11,8 @@ namespace DraftCraft.ViewModels
     public class ProizvodIndexViewModel
     {
         public IPagedList<Proizvod> Proizvodi { get; set; }
+        public int PageItems { get; set; }
+        public Dictionary<int,string> PageItemNumber { get; set; }
         public string Search { get; set; }
         public IEnumerable<KategorijeIbrojac> KatSbrojacem { get; set; }
         public string Kategorija { get; set; }
