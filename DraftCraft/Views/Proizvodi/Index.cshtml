@@ -7,12 +7,12 @@
 
 <h2>@ViewBag.Title</h2>
 <p>
-    @(String.IsNullOrWhiteSpace(Model.Search) ? "Prikaži sve" : "Pretraživanje pojma " + " \"" + Model.Search +"\"" + " je uspješno!"  )
-    @Model.Proizvodi.TotalItemCount proizvoda
+    @(String.IsNullOrWhiteSpace(Model.Search) ? "Prikaži svih" : "Pretraživanje pojma " + " \"" + Model.Search +"\"" + " je uspješno! Pronađeno je "  )
+     @Model.Proizvodi.TotalItemCount proizvoda
 </p>
 <p>
     @Html.ActionLink("Create New", "Create")
-    @using (Html.BeginForm("Index", "Proizvodi", FormMethod.Get))
+    @using (Html.BeginRouteForm("ProizvodiIndex", FormMethod.Get))
     {
         <label>Filtriraj po kategorijama:</label>
         @Html.DropDownListFor(vm => vm.Kategorija, Model.KatFilter, "Sve");

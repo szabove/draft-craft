@@ -24,10 +24,11 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Kategorije", "Index", "Kategorije")</li>
-                    <li>@Html.ActionLink("Proizvodi", "Index", "Proizvodi")</li>
+                    <li>@Html.RouteLink("Proizvodi", "ProizvodiIndex")</li>
+                    <li>@Html.ActionLink("Slike proizvoda","Index", "SlikaProizvoda")</li>
                 </ul>
 
-                    @using (Html.BeginForm("Index", "Proizvodi", FormMethod.Get, new { @class = "navbar-form navbar-left" }))
+                    @using (Html.BeginRouteForm("ProizvodiIndex", FormMethod.Get, new { @class = "navbar-form navbar-left" }))
                      {
                     <div class="form-group">
                         @Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Pretraživanje" })

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace DraftCraft.Models
 {
@@ -45,5 +46,7 @@ namespace DraftCraft.Models
 
         public int? KategorijaID { get; set; }
         public virtual Kategorija Kategorija { get; set; }
+
+        public ICollection<SlikaProizvoda> SlikeProizvoda { get; set; }
     }
 }

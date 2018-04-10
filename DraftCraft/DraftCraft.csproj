@@ -195,11 +195,14 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KategorijeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProizvodiController.cs" />
+    <Compile Include="Controllers\SlikaProizvodaController.cs" />
     <Compile Include="DAL\StoreContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -224,12 +227,25 @@
     <Compile Include="Migrations\201804051129169_IzmjenaVSDProizvodaSaDecimalNaInt.Designer.cs">
       <DependentUpon>201804051129169_IzmjenaVSDProizvodaSaDecimalNaInt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804090940214_SlikeProizvoda.cs" />
+    <Compile Include="Migrations\201804090940214_SlikeProizvoda.Designer.cs">
+      <DependentUpon>201804090940214_SlikeProizvoda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804091227321_UnikatneSlike.cs" />
+    <Compile Include="Migrations\201804091227321_UnikatneSlike.Designer.cs">
+      <DependentUpon>201804091227321_UnikatneSlike.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804101102152_SlikeProizvoda_update.cs" />
+    <Compile Include="Migrations\201804101102152_SlikeProizvoda_update.Designer.cs">
+      <DependentUpon>201804101102152_SlikeProizvoda_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Kategorija.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Proizvod.cs" />
+    <Compile Include="Models\SlikaProizvoda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ProizvodIndexViewModel.cs" />
@@ -304,9 +320,17 @@
     <Content Include="Views\Proizvodi\Details.cshtml" />
     <Content Include="Views\Proizvodi\Edit.cshtml" />
     <Content Include="Views\Proizvodi\Index.cshtml" />
+    <Content Include="Views\SlikaProizvoda\Upload.cshtml" />
+    <Content Include="Views\SlikaProizvoda\Delete.cshtml" />
+    <Content Include="Views\SlikaProizvoda\Details.cshtml" />
+    <Content Include="Views\SlikaProizvoda\Edit.cshtml" />
+    <Content Include="Views\SlikaProizvoda\Index.cshtml" />
+    <Content Include="Views\Error\FileUploadLimitExceeded.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\SlikeProizvoda\Thumbnails\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -336,6 +360,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804051129169_IzmjenaVSDProizvodaSaDecimalNaInt.resx">
       <DependentUpon>201804051129169_IzmjenaVSDProizvodaSaDecimalNaInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804090940214_SlikeProizvoda.resx">
+      <DependentUpon>201804090940214_SlikeProizvoda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804091227321_UnikatneSlike.resx">
+      <DependentUpon>201804091227321_UnikatneSlike.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804101102152_SlikeProizvoda_update.resx">
+      <DependentUpon>201804101102152_SlikeProizvoda_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

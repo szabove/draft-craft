@@ -7,5 +7,6 @@ namespace DraftCraft.DAL
     {
         public DbSet<Proizvod> Proizvodi { get; set; }
         public DbSet<Kategorija> Kategorije { get; set; }
+        public DbSet<SlikaProizvoda> SlikeProizvoda { get; set; }
     }
 }

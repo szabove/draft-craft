@@ -25,14 +25,7 @@ namespace DraftCraft.Controllers
 
             var proizvodi = db.Proizvodi.Include(p => p.Kategorija);
 
-            if (!String.IsNullOrEmpty(kategorija))
-            {
-                proizvodi = proizvodi.Where(p => p.Kategorija.Naziv == kategorija);
-                viewModel.Kategorija = kategorija;
-            }
-
-
-            //Searching products by name || description || category
+           //Searching products by name || description || category
             if (!String.IsNullOrEmpty(search))
             {
                 proizvodi = proizvodi.Where(p => p.Naziv.Contains(search) || p.Opis.Contains(search) || p.Kategorija.Naziv.Contains(search));
@@ -51,9 +44,13 @@ namespace DraftCraft.Controllers
                                           ProizvodiCount = catGroup.Count()
                                       };
 
+            if (!String.IsNullOrEmpty(kategorija))
+            {
+                proizvodi = proizvodi.Where(p => p.Kategorija.Naziv == kategorija);
+                viewModel.Kategorija = kategorija;
+            }
 
-
-            var kategorije = proizvodi.OrderBy(p => p.Kategorija.Naziv).Select(p => p.Kategorija.Naziv).Distinct();
+           // var kategorije = proizvodi.OrderBy(p => p.Kategorija.Naziv).Select(p => p.Kategorija.Naziv).Distinct();
 
             if (!String.IsNullOrEmpty(kategorija))
             {
